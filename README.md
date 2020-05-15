@@ -45,7 +45,8 @@ y <- xm %*% beta + gamma*z + rnorm(n)
 For unregularized linear regression, the standard error can be estimated
 via asymptotic theory or perturbation method.
 
-#### Estimating standard error via asymptotic theory
+When estimating standard error via asymptotic theory, the symmetric
+asymptotic confidence interval will be returned.
 
 ``` r
 SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
@@ -53,7 +54,9 @@ SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
         M = NULL, seed_num = NULL)
 ```
 
-#### Estimating standard error via perturbation
+When estimating standard error via perturbation, the lower bound and
+upper bound for confidence interval are the \(\alpha/2\)-th quantile and
+\(1-\alpha/2\)-th quantile for the samples of perturbated estimates.
 
 ``` r
 SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
