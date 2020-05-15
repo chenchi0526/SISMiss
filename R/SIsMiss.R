@@ -34,9 +34,9 @@
 #' @return A table. Summary of estimates and standard error presented in the table
 #' with \eqn{p+1} rows and 2 columns.
 
-NFMiss_fit <- function(y, z, u, regularize = FALSE, cov.names = NULL,
-                       se.method = NULL, CI.alpha = NULL,
-                       M = 500, seed_num = 123){
+SIsMiss <- function(y, z, u, regularize = FALSE, cov.names = NULL,
+                    se.method = NULL, CI.alpha = NULL,
+                    M = 500, seed_num = 123){
   regularize_TF <- regularize
   if(regularize_TF != TRUE & regularize_TF!= FALSE){
     stop("Argument regularize is invalid.")
@@ -179,11 +179,11 @@ NFMiss_fit <- function(y, z, u, regularize = FALSE, cov.names = NULL,
       res_se <- rep(".", p+1)
     }else{
       print("Start to evaluate standard error.")
-      res_pert <- NFMiss_se(y, z, u, gamma_tilde_hat = NULL, beta_hat = NULL,
-                            se.method,
-                            M, seed_num, regularize_TF,
-                            data.pair, newcov.pair,
-                            obs.if, w_hat = NULL)
+      res_pert <- SIsMiss_se(y, z, u, gamma_tilde_hat = NULL, beta_hat = NULL,
+                             se.method,
+                             M, seed_num, regularize_TF,
+                             data.pair, newcov.pair,
+                             obs.if, w_hat = NULL)
       res_se <- apply(res_pert, 1, function(x){sd(x, na.rm = TRUE)})
       res_lb <- apply(res_pert, 1, function(x){quantile(x, CI.alpha/2, na.rm = TRUE)})
       res_ub <- apply(res_pert, 1, function(x){quantile(x, 1-CI.alpha/2, na.rm = TRUE)})

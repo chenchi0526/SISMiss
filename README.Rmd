@@ -1,0 +1,65 @@
+---
+title: "SIsMiss"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# SIsMiss
+
+`SIsMiss` is an R package for variable **s**election and statistical **i**nference under **s**hadow variable assumption for a linear regression with **miss**ing subjects in response. `SIsMiss` is applicable to linear regression with regularization and without regularization. Robust inference will be obtained for both scenario of missing at random (MAR) and missing not at random (MNAR). The estimates and standard error for the unknown regression coefficients will be returned, along with optional confidence intervals.
+
+The underlying estimating method is based on conditional likelihood in paper.
+
+## Installation
+
+You can install SIsMiss from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("chenchi0526/SISMiss")
+```
+
+## Example
+```{r example}
+rm(list = ls())
+library(SIsMiss)
+N <- 50
+p <- 8
+beta <- c(3, 0, 1.5, 0, 2, rep(0, p-5))
+gamma <- 3
+xm <- matrix(rnorm(n*p), ncol = p, nrow = n)
+z <- rnorm(N, 0, 1)
+y <- xm %*% beta + gamma*z + rnorm(n)
+```
+### Unregularized linear regression
+For unregularized linear regression, the standard error can be estimated via asymptotic theory or perturbation method.
+#### Estimating standard error via asymptotic theory
+```{r example}
+SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
+        se.method = "asymp", CI.alpha = 0.05,
+        M = NULL, seed_num = NULL)
+```
+#### Estimating standard error via perturbation
+```{r example}
+SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
+        se.method = "perturb", CI.alpha = 0.05,
+        M = 200, seed_num = 123)
+```
+
+### Regularized linear regression
+ For regularized linear regression, the standard error is estimated via perturbation method only. 
+
+```{r example}
+SIsMiss(y, z, u, regularize = TRUE, cov.names = NULL,
+        se.method = "perturb", CI.alpha = 0.05,
+        M = 200, seed_num = 123)
+```
