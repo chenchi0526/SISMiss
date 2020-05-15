@@ -29,36 +29,38 @@ devtools::install_github("chenchi0526/SISMiss")
 ```
 
 ## Example
-```{r example}
+```{r eval=FALSE}
 rm(list = ls())
 library(SIsMiss)
-N <- 50
+n <- 50
 p <- 8
 beta <- c(3, 0, 1.5, 0, 2, rep(0, p-5))
 gamma <- 3
 xm <- matrix(rnorm(n*p), ncol = p, nrow = n)
-z <- rnorm(N, 0, 1)
+z <- rnorm(n, 0, 1)
 y <- xm %*% beta + gamma*z + rnorm(n)
 ```
 ### Unregularized linear regression
 For unregularized linear regression, the standard error can be estimated via asymptotic theory or perturbation method.
+
 #### Estimating standard error via asymptotic theory
-```{r example}
+```{r eval=FALSE}
 SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
         se.method = "asymp", CI.alpha = 0.05,
         M = NULL, seed_num = NULL)
 ```
+
 #### Estimating standard error via perturbation
-```{r example}
+```{r eval=FALSE}
 SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
         se.method = "perturb", CI.alpha = 0.05,
         M = 200, seed_num = 123)
 ```
 
 ### Regularized linear regression
- For regularized linear regression, the standard error is estimated via perturbation method only. 
+For regularized linear regression, the standard error is estimated via perturbation method only. 
 
-```{r example}
+```{r eval=FALSE}
 SIsMiss(y, z, u, regularize = TRUE, cov.names = NULL,
         se.method = "perturb", CI.alpha = 0.05,
         M = 200, seed_num = 123)
