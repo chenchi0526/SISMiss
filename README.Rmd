@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 `SIsMiss` is an R package for variable **s**election and statistical **i**nference under **s**hadow variable assumption for a linear regression with **miss**ing subjects in response. `SIsMiss` is applicable to linear regression with regularization and without regularization. Robust inference will be obtained for both scenario of missing at random (MAR) and missing not at random (MNAR). The estimates and standard error for the unknown regression coefficients will be returned, along with optional confidence intervals.
 
-The underlying estimating method is based on conditional likelihood in paper.
+The underlying estimating method is based on conditional likelihood discussed in paper (...).
 
 ## Installation
 
@@ -29,6 +29,7 @@ devtools::install_github("chenchi0526/SISMiss")
 ```
 
 ## Example
+For simplicity, consider a linear regression with no missing subjects.
 ```{r eval=FALSE}
 rm(list = ls())
 library(SIsMiss)
@@ -58,7 +59,7 @@ SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
 ```
 
 ### Regularized linear regression
-For regularized linear regression, the standard error is estimated via perturbation method only. 
+For regularized linear regression, the adaptive LASSO penalty is considered where the tuning parameter is determined by BIC. The standard error of coefficients is estimated via perturbation method only. 
 
 ```{r eval=FALSE}
 SIsMiss(y, z, u, regularize = TRUE, cov.names = NULL,

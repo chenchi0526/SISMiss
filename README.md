@@ -1,3 +1,6 @@
+SIsMiss
+================
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # SIsMiss
@@ -11,8 +14,8 @@ missing at random (MAR) and missing not at random (MNAR). The estimates
 and standard error for the unknown regression coefficients will be
 returned, along with optional confidence intervals.
 
-The underlying estimating method is based on conditional likelihood in
-paper.
+The underlying estimating method is based on conditional likelihood
+discussed in paper (…).
 
 ## Installation
 
@@ -63,8 +66,9 @@ SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
 
 ### Regularized linear regression
 
-For regularized linear regression, the standard error is estimated via
-perturbation method only.
+For regularized linear regression, the adaptive LASSO penalty is
+considered where the tuning parameter is determined by BIC. The standard
+error of coefficients is estimated via perturbation method only.
 
 ``` r
 SIsMiss(y, z, u, regularize = TRUE, cov.names = NULL,
