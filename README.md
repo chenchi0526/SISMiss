@@ -3,8 +3,6 @@ SIsMiss
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SIsMiss
-
 `SIsMiss` is an R package for variable **s**election and statistical
 **i**nference under **s**hadow variable assumption for a linear
 regression with **miss**ing subjects in response. `SIsMiss` is
@@ -23,10 +21,12 @@ You can install SIsMiss from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("chenchi0526/SISMiss")
+devtools::install_github("chenchi0526/SIsMiss")
 ```
 
 ## Example
+
+For simplicity, consider a linear regression with no missing subjects.
 
 ``` r
 rm(list = ls())
