@@ -55,8 +55,8 @@ SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
 ```
 
 When estimating standard error via perturbation, the lower bound and
-upper bound for confidence interval are the \(\alpha/2\)-th quantile and
-\(1-\alpha/2\)-th quantile for the samples of perturbated estimates.
+upper bound for confidence interval are the α/2-th quantile and 1-α/2-th
+quantile for the samples of perturbated estimates.
 
 ``` r
 SIsMiss(y, z, u, regularize = FALSE, cov.names = NULL,
