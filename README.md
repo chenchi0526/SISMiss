@@ -35,9 +35,9 @@ n <- 50
 p <- 8
 beta <- c(3, 0, 1.5, 0, 2, rep(0, p-5))
 gamma <- 3
-xm <- matrix(rnorm(n*p), ncol = p, nrow = n)
+u <- matrix(rnorm(n*p), ncol = p, nrow = n)
 z <- rnorm(n, 0, 1)
-y <- xm %*% beta + gamma*z + rnorm(n)
+y <- u %*% beta + gamma*z + rnorm(n)
 ```
 
 ### Unregularized linear regression
