@@ -13,7 +13,7 @@ and standard error for the unknown regression coefficients will be
 returned, along with optional confidence intervals.
 
 The underlying estimating method is based on conditional likelihood
-discussed in paper (…).
+discussed in [Zhao and Chen (2020)](https://www.mdpi.com/1099-4300/22/10/1154).
 
 ## Installation
 
